@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article | Lalith Adithya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    /* ── Markdown rendered content ── */
+    #md-body { max-width: 780px; margin: 0 auto; padding: 80px 24px 100px; }
+
+    #md-title-bar {
+      margin-bottom: 48px;
+      padding-bottom: 28px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    #md-content h1 { font-size: clamp(1.6rem,4vw,2.2rem); font-weight:800; color:var(--text-primary); margin:40px 0 16px; line-height:1.25; }
+    #md-content h2 { font-size:1.4rem; font-weight:700; color:var(--text-primary); margin:36px 0 14px; padding-bottom:8px; border-bottom:2px solid var(--border); }
+    #md-content h3 { font-size:1.1rem; font-weight:600; color:var(--text-primary); margin:28px 0 12px; }
+    #md-content h4 { font-size:1rem; font-weight:600; color:var(--text-primary); margin:22px 0 10px; }
+    #md-content p  { color:var(--text-secondary); font-size:0.975rem; line-height:1.8; margin-bottom:16px; }
+
+    #md-content ul, #md-content ol { margin:12px 0 20px 24px; }
+    #md-content ul  { list-style:disc; }
+    #md-content ol  { list-style:decimal; }
+    #md-content li  { color:var(--text-secondary); font-size:0.975rem; line-height:1.75; margin-bottom:6px; }
+
+    #md-content code {
+      background:var(--bg-alt); border:1px solid var(--border);
+      padding:2px 8px; border-radius:5px;
+      font-size:0.875rem; font-family:'JetBrains Mono','Fira Code',monospace;
+      color:var(--blue-dark);
+    }
+    #md-content pre {
+      background:var(--navy); border-radius:var(--radius);
+      padding:20px 24px; margin:20px 0;
+      overflow-x:auto;
+    }
+    #md-content pre code {
+      background:transparent; border:none; padding:0;
+      color:#e2e8f0; font-size:0.875rem;
+    }
+    #md-content a { color:var(--blue); text-decoration:underline; text-underline-offset:3px; }
+    #md-content hr { border:none; border-top:2px solid var(--border); margin:36px 0; }
+
+    #md-content img {
+      max-width:100%; display:block;
+      margin:24px 0; border-radius:var(--radius);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow-md);
+    }
+
+    /* Tables */
+    #md-content table { width:100%; border-collapse:collapse; margin:20px 0; font-size:0.9rem; }
+    #md-content thead tr { background:var(--navy); }
+    #md-content thead th { color:#fff; padding:11px 16px; text-align:left; font-weight:600; }
+    #md-content tbody tr { border-bottom:1px solid var(--border); }
+    #md-content tbody tr:hover { background:var(--bg-alt); }
+    #md-content td { padding:10px 16px; color:var(--text-secondary); vertical-align:top; }
+
+    /* Blockquotes → styled notes */
+    #md-content blockquote {
+      background:var(--blue-light);
+      border-left:4px solid var(--blue);
+      padding:14px 18px; margin:16px 0;
+      border-radius:0 var(--radius) var(--radius) 0;
+    }
+    #md-content blockquote p { color:var(--text-secondary); font-size:0.9rem; margin:0; }
+
+    /* details/summary (used in ms-office article) */
+    #md-content details {
+      background:var(--bg-alt); border:1.5px solid var(--border);
+      border-radius:var(--radius); padding:16px 20px; margin:14px 0;
+    }
+    #md-content summary {
+      cursor:pointer; font-size:0.95rem; color:var(--text-primary);
+      padding:2px 0; user-select:none;
+    }
+    #md-content summary:hover { color:var(--blue); }
+
+    /* Loading / error states */
+    #md-loading { text-align:center; padding:80px 24px; color:var(--text-muted); font-size:1rem; }
+    #md-error   { text-align:center; padding:80px 24px; color:#ef4444; font-size:1rem; }
+
+    @media (max-width:480px) { #md-body { padding:60px 16px 80px; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="article-page-nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="nav-logo">Lalith <span>Adithya</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#articles">Articles</a></li>
+        <li><a href="../index.html#certifications">Certifications</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ARTICLE BODY -->
+  <main style="padding-top:64px;">
+    <div id="md-body">
+
+      <!-- Header: back link + dynamic meta -->
+      <div id="md-title-bar">
+        <a href="../index.html#articles" class="article-back-link">
+          <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Articles
+        </a>
+        <div id="md-meta" class="article-page-meta" style="margin-top:16px;"></div>
+      </div>
+
+      <!-- Rendered Markdown injected here -->
+      <div id="md-loading">Loading article…</div>
+      <div id="md-error"  style="display:none;"></div>
+      <div id="md-content"></div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2024 Lalith Adithya — <a href="../index.html">Back to Portfolio</a></p>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Navbar ── */
+    const navbar    = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    /* ── Article metadata map ── */
+    const meta = {
+      'swiggy_article.md':           { cat: 'User Manual',          wiki: 'https://github.com/Lalith-Adithya-k/AdithyaTechWorks/wiki/Swiggy-Mobile-App-User-Manual' },
+      'level_l1.md':                  { cat: 'Support Knowledge Base', wiki: 'https://github.com/Lalith-Adithya-k/AdithyaTechWorks/wiki/Level-1-Support-Knowledge-Manual-for-MS-Outlook' },
+      'how_to_install_ms_office.md':  { cat: 'Installation Guide',   wiki: 'https://github.com/Lalith-Adithya-k/AdithyaTechWorks/wiki/How-to-Install-MS-Office' },
+    };
+
+    /* ── Resolve the ?file= param ── */
+    const params   = new URLSearchParams(window.location.search);
+    const filename = params.get('file');
+
+    const loading = document.getElementById('md-loading');
+    const errBox  = document.getElementById('md-error');
+    const content = document.getElementById('md-content');
+    const metaBar = document.getElementById('md-meta');
+
+    if (!filename) {
+      loading.style.display = 'none';
+      errBox.style.display  = 'block';
+      errBox.textContent    = 'No article specified. Please go back and select an article.';
+    } else {
+      /* Populate meta bar */
+      const info = meta[filename] || {};
+      metaBar.innerHTML = `
+        <span>By Lalith Adithya</span>
+        ${info.cat  ? `<span>${info.cat}</span>` : ''}
+        ${info.wiki ? `<span><a href="${info.wiki}" target="_blank" rel="noopener">View on GitHub ↗</a></span>` : ''}
+      `;
+
+      /* Configure marked */
+      marked.setOptions({
+        breaks: true,
+        gfm: true,
+      });
+
+      /* Fetch and render */
+      fetch(filename)
+        .then(r => {
+          if (!r.ok) throw new Error(`Could not load "${filename}" (${r.status})`);
+          return r.text();
+        })
+        .then(md => {
+          loading.style.display = 'none';
+          content.innerHTML = marked.parse(md);
+
+          /* Set page title from first H1 */
+          const h1 = content.querySelector('h1');
+          if (h1) document.title = h1.textContent + ' | Lalith Adithya';
+        })
+        .catch(err => {
+          loading.style.display = 'none';
+          errBox.style.display  = 'block';
+          errBox.textContent    = 'Error loading article: ' + err.message;
+        });
+    }
+  </script>
+</body>
+</html>
