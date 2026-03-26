@@ -19,6 +19,7 @@
       border-bottom: 2px solid var(--border);
     }
 
+    #md-content h1, #md-content h2, #md-content h3, #md-content h4 { scroll-margin-top: 80px; }
     #md-content h1 { font-size: clamp(1.6rem,4vw,2.2rem); font-weight:800; color:var(--text-primary); margin:40px 0 16px; line-height:1.25; }
     #md-content h2 { font-size:1.4rem; font-weight:700; color:var(--text-primary); margin:36px 0 14px; padding-bottom:8px; border-bottom:2px solid var(--border); }
     #md-content h3 { font-size:1.1rem; font-weight:600; color:var(--text-primary); margin:28px 0 12px; }
@@ -149,9 +150,9 @@
 
     /* ── Article metadata map ── */
     const meta = {
-      'swiggy_article.md':           { cat: 'User Manual',          wiki: 'https://github.com/Lalith-Adithya-k/AdithyaTechWorks/wiki/Swiggy-Mobile-App-User-Manual' },
-      'level_l1.md':                  { cat: 'Support Knowledge Base', wiki: 'https://github.com/Lalith-Adithya-k/AdithyaTechWorks/wiki/Level-1-Support-Knowledge-Manual-for-MS-Outlook' },
-      'how_to_install_ms_office.md':  { cat: 'Installation Guide',   wiki: 'https://github.com/Lalith-Adithya-k/AdithyaTechWorks/wiki/How-to-Install-MS-Office' },
+      'swiggy_article.md':           { cat: 'User Manual' },
+      'level_l1.md':                 { cat: 'Support Knowledge Base' },
+      'how_to_install_ms_office.md': { cat: 'Installation Guide' },
     };
 
     /* ── Resolve the ?file= param ── */
@@ -173,11 +174,21 @@
       metaBar.innerHTML = `
         <span>By Lalith Adithya</span>
         ${info.cat  ? `<span>${info.cat}</span>` : ''}
-        ${info.wiki ? `<span><a href="${info.wiki}" target="_blank" rel="noopener">View on GitHub ↗</a></span>` : ''}
       `;
 
-      /* Configure marked */
-      marked.setOptions({
+      /* Configure marked – custom heading renderer adds id slugs so TOC links work */
+      marked.use({
+        renderer: {
+          heading({ text, depth }) {
+            const plain = text.replace(/<[^>]+>/g, '');
+            const id = plain.toLowerCase()
+              .replace(/[^\w\s-]/g, '')   // strip punctuation (periods, etc.)
+              .replace(/\s+/g, '-')       // spaces → hyphens
+              .replace(/-+/g, '-')        // collapse multiple hyphens
+              .trim();
+            return `<h${depth} id="${id}">${text}</h${depth}>\n`;
+          }
+        },
         breaks: true,
         gfm: true,
       });
