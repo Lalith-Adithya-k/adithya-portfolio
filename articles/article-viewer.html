@@ -11,7 +11,8 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     /* ── Markdown rendered content ── */
-    #md-body { max-width: 780px; margin: 0 auto; padding: 80px 24px 100px; }
+    /* Widen the reading column to reduce side whitespace on both sides. */
+    #md-body { max-width: 980px; margin: 0 auto; padding: 80px 16px 100px; }
 
     #md-title-bar {
       margin-bottom: 48px;
@@ -88,7 +89,7 @@
     #md-loading { text-align:center; padding:80px 24px; color:var(--text-muted); font-size:1rem; }
     #md-error   { text-align:center; padding:80px 24px; color:#ef4444; font-size:1rem; }
 
-    @media (max-width:480px) { #md-body { padding:60px 16px 80px; } }
+    @media (max-width:480px) { #md-body { padding:60px 12px 80px; } }
   </style>
 </head>
 <body>
