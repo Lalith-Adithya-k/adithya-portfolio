@@ -7,6 +7,8 @@
 
 ## Document Information
 
+**Note**: This layout is optimized for desktop viewing. If accessing on a mobile device, please switch to landscape mode for a better viewing experience.
+
 | Field | Details |
 |-------|---------|
 | **Document Title** | Swiggy Mobile App User Manual v4.2 |
